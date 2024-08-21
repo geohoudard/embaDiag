@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Éco-conception</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="media/CIVC_Sign_Q.png" type="image/x-icon">
+</head>
+<body>
+    <div class="header">
+        <img src="media/logo-large@2x.png" alt="Adelphe Logo"><img src="media/CIVC_Sign_Q.png" alt="CIVC Logo">&nbsp Outil d'Éco-conception des emballages en Champagne
+    </div>
+    <div id="cuveeContainer">
+        <input type="text" id="NewCuveeName" placeholder="Nom de la cuvée">
+        <input type="number" id="NewCuveeNb" placeholder="Nb de bouteille / an">
+        <button type="button_cuvee" id="button_cuvee" onclick="createNewCuvee()">Ajouter</button>
+    </div>
+    <div class="container-wrapper">
+        <div class="container">
+            <form id="diagnosticForm">
+                <div class="section" alt="bouteille">
+                    <button type="button" class="accordion">
+                        <img src="media/bouteille.png" alt="Icon" class="checkbox-icon">Bouteille</button>
+                    <div class="panel">
+                        <label for="bottleWeight"></label>
+                        <input type="number" id="bottleWeight" name="bottleWeight" placeholder="Poids la bouteille (g):">
+                        
+                        <label for="bottleshape">Forme de la bouteille :</label>
+                        <select id="bottleshape" name="bottleshape">
+                            <option value="0"></option>
+                            <option value="standard">Standard</option>
+                            <option value="special">Spéciale</option>
+                        </select>
+
+                        <label for="bottlecolor">Couleur de la bouteille :</label>
+                        <select id="bottlecolor" name="bottlecolor">
+                            <option value="0"></option>
+                            <option value="fonce">Verte</option>
+                            <option value="fonce">Marron</option>
+                            <option value="opaque">Opaque</option>
+                            <option value="blanche">Blanche</option>
+                        </select>
+                    
+                        <label for="bottleincr">Incrustations dans le verre :</label>
+                        <select id="bottleincr" name="bottleincr">
+                            <option value="0"></option>
+                            <option value="non">Non</option>
+                            <option value="oui">Oui</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="section" alt="coiffe">
+                    <button type="button" class="accordion">
+                        <img src="media/coiffe.png" alt="Icon" class="checkbox-icon">Coiffe</button>
+                    <div class="panel">
+                        <label for="coiffeMat">Matière:</label>
+                        <select id="coiffeMat" name="coiffeMat">
+                            <option value="0"></option>
+                            <option value="etain">Étain</option>
+                            <option value="alu_epais">100% Alu épais</option>
+                            <option value="complexe">Complexe (alu-PE)</option>
+                            <option value="alu_fin">100% Alu fin (tradi)</option>
+                            <option value="papier">Papier</option>
+                        </select>
+
+                        <label for="coiffeSize">Longueur:</label>
+                        <select id="coiffeSize" name="coiffeSize">
+                            <option value="0"></option>
+                            <option value="longue">Longue</option>
+                            <option value="courte">Courte</option>
+                        </select>
+
+                        <label for="coiffecoll">Collerette :</label>
+                        <select id="coiffecoll" name="coiffecoll">
+                            <option value="0"></option>
+                            <option value="non">Pas de collerette</option>
+                            <option value="papier">Collerette papier</option>
+                            <option value="autre">Collerette autre matière</option>
+                        </select>
+
+                        <label for="coiffethermo">Couvert par plastique thermoformé:</label>
+                        <select id="coiffethermo" name="coiffethermo">
+                            <option value="0"></option>
+                            <option value="non">Non</option>
+                            <option value="oui">Oui</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section" alt="bouchage">
+                    <button type="button" class="accordion">
+                        <img src="media/bouchons.png" alt="Icon" class="checkbox-icon">Bouchage</button>
+                    <div class="panel">
+                        <label for="capsuleType">Type de capsule:</label>
+                        <select id="capsuleType" name="capsuleType">
+                            <option value="0"></option>
+                            <option value="metalique">Métallique</option>
+                            <option value="plastique">Plastique</option>
+                        </select>
+
+                        <label for="capsuleColor">Impressions sur la capsule:</label>
+                        <select id="capsuleColor" name="capsuleColor">
+                            <option value="0"></option>
+                            <option value="non">Pas d'impression</option>
+                            <option value="mono">Une couleur</option>
+                            <option value="mono-inf">Une couleur et impression sur la face inférieure</option>
+                            <option value="poly">Plusieurs couleurs</option>
+                            <option value="poly-inf">Plusieurs couleurs et impression sur la face inférieure</option>
+                        </select>
+
+                        <label for="bouchonType">Bouchon issu de forêts gérées durablement:</label>
+                        <select id="bouchonType" name="bouchonType">
+                            <option value="0"></option>
+                            <option value="oui">Oui</option>
+                            <option value="non">Non</option>
+                            <option value="nsp">Je ne sais pas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section" alt="etiquette">
+                    <button type="button" class="accordion">
+                        <img src="media/etiquette.png" alt="Icon" class="checkbox-icon">Étiquette</button>
+                    <div class="panel">
+                        <input type="number" id="etiquetteCount" name="etiquetteCount" placeholder="Nombre d'étiquettes">
+             
+                        <input type="number" id="etiquetteColor" name="etiquetteColor" placeholder="Nombre de couleurs">
+                        
+                        <label for="etiquetteEcoInk">Usage d'aplats de couleurs:</label>
+                        <select id="etiquetteEcoInk" name="etiquetteEcoInk">
+                            <option value="0"></option>
+                            <option value="Oui">Oui</option>
+                            <option value="Non">Non</option>
+                        </select>
+
+                        <label for="etiquetteMat">Matière de l'étiquette</label>
+                        <select id="etiquetteMat" name="etiquetteMat">
+                            <option value="0"></option>
+                            <option value="papierepais">Papier épais</option>
+                            <option value="papierreshum">Papier résistant à l'état humide</option>
+                            <option value="papiercoton">Papier coton</option>
+                            <option value="métal">Métallique</option>
+                        </select>
+
+                        <label for="etiquetteDor">Dorure :</label>
+                        <select id="etiquetteDor" name="etiquetteDor">
+                            <option value="0"></option>
+                            <option value="pasdorure">Absence de dorure</option>
+                            <option value="dorurefroid">Dorure à froid</option>
+                            <option value="dorurechaud">Dorure à chaud</option>
+                        </select>
+
+                        <label for="etiquetteColle">Colle :</label>
+                        <select id="etiquetteColle" name="etiquetteColle">
+                            <option value="0"></option>
+                            <option value="collestand">Colle standard</option>
+                            <option value="colleultra">Colle ultra-adhésive</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            <form id="diagnosticForm">
+                <div class="section" alt="étuis & coffrets">
+                    <button type="button" class="accordion">
+                        <img src="media/coffret-vin.png" alt="Icon" class="checkbox-icon">Étuis / Coffrets</button>
+                    <div class="panel">
+                        <select id="etuisType" name="etuisType">
+                            <option value="0"></option>
+                            <option value="pasetuiscoffret">Pas d'étuis ou de coffret</option>
+                            <option value="commande">Uniquement sur commande</option>
+                            <option value="systematique">Systématique</option>
+                        </select>
+
+                        <input type="number" id="etuiWeight" name="etuiWeight" placeholder="Poids d'étui/coffret (g)">
+                        <div><br></div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="elementsassos" name="elementsassos">
+                                <label for="elementsassos">Eléments associés (livrets, objets...)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="etuisEcoink" name="etuisEcoink">
+                                <label for="etuisEcoink">Aplats de couleurs</label>
+                            </div>             
+                            <h3>Matières utilisées</h3>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="etuisBois" name="etuisBois">
+                                <label for="etuisBois">Bois</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="etuisPapier" name="etuisPapier">
+                                <label for="etuisPapier">Papier</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="etuisCarton" name="etuisCarton">
+                                <label for="etuisCarton">Carton</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="etuisPlastique" name="etuisPlastique">
+                                <label for="etuisPlastique">Plastique</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="etuisAimant" name="etuisAimant">
+                                <label for="etuisAimant">Aimant(s)</label>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div class="section" alt="suremballage">
+                    <button type="button" class="accordion">
+                        <img src="media/papier-kraft.png" alt="Icon" class="checkbox-icon">Suremballage</button>
+                    <div class="panel">
+                        <select id="suremballage" name="suremballage">
+                            <option value="0"></option>
+                            <option value="pas_de_sac">Pas de sac</option>
+                            <option value="sac_sur_demande">Sacs uniquement sur demande</option>
+                            <option value="sac_systematique">Sacs systématiques</option>
+                        </select>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="suremballageEcoink" name="suremballageEcoink">
+                                <label for="suremballageEcoink">Aplats de couleurs</label>
+                            </div>             
+                            <h3>Matières utilisées</h3>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sacPapier" name="sacPapier">
+                                <label for="sacPapier">Papier</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sacCarton" name="sacCarton">
+                                <label for="sacCarton">Carton</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sacPlastique" name="sacPlastique">
+                                <label for="sacPlastique">Plastique</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sacAimant" name="sacAimant">
+                                <label for="sacAimant">Aimant(s)</label>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+                <div class="section" alt="carton">
+                    <button type="button" class="accordion">
+                        <img src="media/boite-ouverte.png" alt="Icon" class="checkbox-icon">Carton d'expédition</button>
+                    <div class="panel">
+                        <label for="cartonRecycled">Carton/papier recyclé:</label>
+                        <select id="cartonRecycled" name="cartonRecycled">
+                            <option value="0"></option>
+                            <option value="oui">Oui</option>
+                            <option value="non">Non</option>
+                        </select>
+                        <label for="cartonCannelure">Cannelure:</label>
+                        <select id="cartonCannelure" name="cartonCannelure">
+                            <option value="0"></option>
+                            <option value="A">A</option>
+                            <option value="C">C</option>
+                            <option value="B">B</option>
+                            <option value="E">E</option>
+                            <option value="EB">EB</option>
+                            <option value="BE">BE</option>
+                        </select>
+
+                        <label for="cartonInter">Intercalaire:</label>
+                        <select id="cartonInter" name="cartonInter">
+                            <option value="0"></option>
+                            <option value="carton">Carton</option>
+                            <option value="cellulose">Cellulose moulée</option>
+                            <option value="plastique">Plastique</option>
+                        </select>
+
+                        <label for="cartonScotch">Scotch:</label>
+                        <select id="cartonScotch" name="cartonScotch">
+                            <option value="0"></option>
+                            <option value="plastique">Plastique</option>
+                            <option value="papier kraft">Papier Kraft</option>
+                        </select>
+
+                        <label for="cartonDor">Dorure :</label>
+                        <select id="cartonDor" name="cartonDor">
+                            <option value="0"></option>
+                            <option value="pasdorure">Absence de dorure</option>
+                            <option value="dorurefroid">Dorure à froid</option>
+                            <option value="dorurechaud">Dorure à chaud</option>
+                        </select>
+
+                        <label for="cartonInk">Encrage :</label>
+                        <select id="cartonInk" name="cartonInk">
+                            <option value="0"></option>
+                            <option value="huileminerale">Huile minérale</option>
+                            <option value="encrevegetale">Encre végétale</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section" alt="objet">
+                    <button type="button" class="accordion">
+                        <img src="media/boite-cadeau.png" alt="Icon" class="checkbox-icon">Objets publicitaires</button>
+                    <div class="panel">
+                        <label for="objet">Objet publicitaire associé :</label>
+                        <select id="objet" name="objet">
+                            <option value="0"></option>
+                            <option value="non">Non</option>
+                            <option value="oui">Oui</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="container" alt="calculs">
+            <button type="button_diag" onclick="calculateDiagnosis()">Lancer le diagnostic</button>           
+            <button type="button_save" onclick="saveResults()">Enregistrer les résultats</button>
+            <button type="button_save" onclick="document.getElementById('csvFileInput').click()">Charger des résultats (.csv)</button>
+            <button type="button_pdf" onclick="viewPDF()">Afficher le plan de prévention et d'écoconception : Filière Champagne</button>
+        </div>
+        <div class="container" alt="resultats">
+            <div id="results">
+                <h4>Résultats du Diagnostic</h4>
+                <input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="loadCSV(event)">
+                <p id="diagnosisResult">L'objectif est d'approcher le score de 0.<br>Les points d'améliorations seront listés sous le score.</p>
+            </div>
+        </div>        
+    </div>
+    <script src="js/scripts.js"></script>
+    <script src="js/saveResults.js"></script>
+</body>
+</html>

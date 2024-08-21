@@ -1,0 +1,263 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/rough-diagonal.png');
+}
+
+.header {
+    margin-left: 5px;
+    margin: 20px 0;
+    margin-left: 5px;
+    height: auto;
+    text-align: center;
+    font-weight: 700;
+    font-size:x-large;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+
+.header img {
+    max-width: 300px;
+    margin-left: 10px;
+    max-height: 80px;
+    height: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.container-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.container {
+    width: 20%;
+    margin: 1px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: inline-block;
+}
+
+#cuveeContainer {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+
+#NewCuveeName, #NewCuveeNb {
+    margin: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    color: #070707; 
+    margin-bottom: 20px;
+}
+
+.accordion {
+    background-color: #0077c8; /* Couleur adaptée au logo Adelphe */
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: left;
+    position: relative;
+    align-items: center;
+}
+
+.accordion:hover,
+.accordion.active {
+    background-color: #ffc107; /* Couleur jaune pour le contraste */
+    color: #000;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    color: #555;
+}
+
+input[type="number"], select {
+    width: 200px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-left: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="text"], select {
+    width: 200px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-left: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checkbox-item label {
+    margin: 0;
+}
+
+.checkbox-icon {
+    width: 30px; 
+    height: 30px; 
+    margin-right: 5px;
+    align-items: middle;
+    text-align: center;
+}
+
+button[type="button_diag"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: #ffc107; 
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    border:rgb(0, 0, 0);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+}
+button[type="button_diag"]:hover {
+    background: #ffc1078c; 
+    color: #000;
+}
+
+button[type="button_cuvee"] {
+    display: block;
+    height: 40px;
+    width: 100px;
+    margin-right: 5px;
+    background: #a7dcff; 
+    text-align: center;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+}
+button[type="button_cuvee"]:hover {
+    background: #ffc107; 
+    color: #000;
+}
+
+button[type="button_pdf"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: #ffc10700; 
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    font-style: italic;
+    border-width: 20px;
+    border: double;
+    border-color: #ffc107;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 15px;
+}
+button[type="button_pdf"]:hover {
+    background: #ffc1078c; 
+    color: #000;
+}
+
+button[type="button_save"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: #ff9307; 
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    border:rgb(0, 0, 0);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
+}
+button[type="button_save"]:hover {
+    background: #ffc1078c; 
+    color: #000;
+}
+
+#results {
+    margin-top: 30px;
+    padding: 15px;
+    background: #e9ecef;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 16px;
+}
+
+#diagnosisResult {
+    font-size: 14px;
+    color: #333;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: #0077c8; /* Couleur adaptée au logo Adelphe */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 119, 200, 0.5); /* Effet de mise au point adapté */
+}
