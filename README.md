@@ -46,4 +46,5 @@ Pour déployer cette application, il suffit de placer les fichiers sur un serveu
 
 ## Auteur
 
-Développé par [Votre Nom ou Entreprise].
+Développé par le Comité Champagne pour la mise en oeuvre de son guide et plan de prévention et d'éco-conception des emballages.
+
