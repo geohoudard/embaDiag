@@ -1,66 +1,76 @@
-// saveResults.js
-
 function saveResults() {
     const headers = [
-        "Poids de la bouteille (g)","Forme de la bouteille","Couleur de la bouteille","Incrustations dans le verre",
-        "Coiffe matiere","coiffe longueur","Collerette","plastique thermoforme", 
-        "Type de capsule","Impressions sur la capsule","bouchonType",
-        "etiquetteCount","etiquetteColor","etiquetteEcoInk"
+        "Nom de la Cuvée", 
+        "Nombre de Bouteilles",
+        "Poids de la bouteille (g)", "Forme de la bouteille", "Couleur de la bouteille", "Incrustations dans le verre",
+        "Coiffe matiere", "Coiffe longueur", "Collerette", "Plastique thermoformé", 
+        "Type de capsule", "Impressions sur la capsule", "Type de bouchon",
+        "Nombre d'étiquettes", "Nombre de couleurs", "Usage d'aplats de couleurs",
+        "Matière de l'étiquette", "Dorure", "Colle",
+        "Type d'étuis/coffret", "Poids d'étui/coffret", "Éléments associés", "Aplats de couleurs étuis",
+        "Bois utilisé", "Papier utilisé", "Carton utilisé", "Plastique utilisé", "Aimant(s) utilisé(s)",
+        "Type de suremballage", "Aplats de couleurs suremballage", "Papier utilisé suremballage",
+        "Carton utilisé suremballage", "Plastique utilisé suremballage", "Aimant(s) utilisé(s) suremballage",
+        "Carton recyclé", "Cannelure", "Intercalaire", "Scotch", "Dorure carton", "Encrage carton",
+        "Objet publicitaire associé"
     ];
-    const rows = [
-        [
-            document.getElementById('bottleWeight').value,
-            document.getElementById('bottleshape').value,
-            document.getElementById('bottlecolor').value,
-            document.getElementById('bottleincr').value,
 
-            document.getElementById('coiffeMat').value,
-            document.getElementById('coiffeSize').value,
-            document.getElementById('coiffecoll').value,
-            document.getElementById('coiffethermo').value,
+    const rows = cuveeData.map(cuvee => [
+        cuvee.name,
+        cuvee.nb || "",  
+        cuvee.diagnostic.bottleWeight || "",
+        cuvee.diagnostic.bottleshape || "",
+        cuvee.diagnostic.bottlecolor || "",
+        cuvee.diagnostic.bottleincr || "",
 
-            document.getElementById('capsuleType').value,
-            document.getElementById('capsuleColor').value,
-            document.getElementById('bouchonType').value,
+        cuvee.diagnostic.coiffeMat || "",
+        cuvee.diagnostic.coiffeSize || "",
+        cuvee.diagnostic.coiffecoll || "",
+        cuvee.diagnostic.coiffethermo || "",
 
-            document.getElementById('etiquetteCount').value,
-            document.getElementById('etiquetteColor').value,
-            document.getElementById('etiquetteEcoInk').value,
-            document.getElementById('etiquetteMat').value,
-            document.getElementById('etiquetteDor').value,
-            document.getElementById('etiquetteColle').value,
-            
-            document.getElementById('etuisType').value,
-            document.getElementById('etuiWeight').value,
-            document.getElementById('elementsassos').checked ? 'Oui' : 'Non',
-            document.getElementById('etuisEcoink').checked ? 'Oui' : 'Non',
-            document.getElementById('etuisBois').checked ? 'Oui' : 'Non',
-            document.getElementById('etuisPapier').checked ? 'Oui' : 'Non',
-            document.getElementById('etuisCarton').checked ? 'Oui' : 'Non',
-            document.getElementById('etuisPlastique').checked ? 'Oui' : 'Non',
-            document.getElementById('etuisAimant').checked ? 'Oui' : 'Non',
+        cuvee.diagnostic.capsuleType || "",
+        cuvee.diagnostic.capsuleColor || "",
+        cuvee.diagnostic.bouchonType || "",
 
-            document.getElementById('suremballage').value,
-            document.getElementById('suremballageEcoink').checked ? 'Oui' : 'Non',
-            document.getElementById('sacPapier').checked ? 'Oui' : 'Non',
-            document.getElementById('sacCarton').checked ? 'Oui' : 'Non',
-            document.getElementById('sacPlastique').checked ? 'Oui' : 'Non',
-            document.getElementById('sacAimant').checked ? 'Oui' : 'Non',
+        cuvee.diagnostic.etiquetteCount || "",
+        cuvee.diagnostic.etiquetteColor || "",
+        cuvee.diagnostic.etiquetteEcoInk || "",
+        cuvee.diagnostic.etiquetteMat || "",
+        cuvee.diagnostic.etiquetteDor || "",
+        cuvee.diagnostic.etiquetteColle || "",
+        
+        cuvee.diagnostic.etuisType || "",
+        cuvee.diagnostic.etuiWeight || "",
+        cuvee.diagnostic.elementsassos ? 'Oui' : 'Non',
+        cuvee.diagnostic.etuisEcoink ? 'Oui' : 'Non',
+        cuvee.diagnostic.etuisBois ? 'Oui' : 'Non',
+        cuvee.diagnostic.etuisPapier ? 'Oui' : 'Non',
+        cuvee.diagnostic.etuisCarton ? 'Oui' : 'Non',
+        cuvee.diagnostic.etuisPlastique ? 'Oui' : 'Non',
+        cuvee.diagnostic.etuisAimant ? 'Oui' : 'Non',
 
-            document.getElementById('cartonRecycled').value,
-            document.getElementById('cartonCannelure').value,
-            document.getElementById('cartonInter').value,
-            document.getElementById('cartonScotch').value,
-            document.getElementById('cartonDor').value,
-            document.getElementById('cartonInk').value,
+        cuvee.diagnostic.suremballage || "",
+        cuvee.diagnostic.suremballageEcoink ? 'Oui' : 'Non',
+        cuvee.diagnostic.sacPapier ? 'Oui' : 'Non',
+        cuvee.diagnostic.sacCarton ? 'Oui' : 'Non',
+        cuvee.diagnostic.sacPlastique ? 'Oui' : 'Non',
+        cuvee.diagnostic.sacAimant ? 'Oui' : 'Non',
 
-            document.getElementById('objet').value
-        ]
-    ];
+        cuvee.diagnostic.cartonRecycled || "",
+        cuvee.diagnostic.cartonCannelure || "",
+        cuvee.diagnostic.cartonInter || "",
+        cuvee.diagnostic.cartonScotch || "",
+        cuvee.diagnostic.cartonDor || "",
+        cuvee.diagnostic.cartonInk || "",
+
+        cuvee.diagnostic.objet || ""
+    ]);
+
     let csvContent = headers.join(",") + "\n";
     rows.forEach(row => {
         csvContent += row.map(value => `"${value}"`).join(",") + "\n";
     });
+
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -83,54 +93,70 @@ function parseCSV(csvText) {
     const headers = rows[0].split(',');
     const values = rows.slice(1).map(row => row.split(','));
 
-    values.forEach((value) => {
-        {
-            document.getElementById('bottleWeight').value = value[0].replace(/"/g, '');
-            document.getElementById('bottleshape').value = value[1].replace(/"/g, '');
-            document.getElementById('bottlecolor').value = value[2].replace(/"/g, '');
-            document.getElementById('bottleincr').value = value[3].replace(/"/g, '');
+    cuveeData = values.map((value, index) => {
+        return {
+            id: index,  // Temporairement utiliser l'index
+            name: value[0].replace(/"/g, ''),
+            nb: value[1].replace(/"/g, ''),
+            diagnostic: {
+                bottleWeight: value[2].replace(/"/g, ''),
+                bottleshape: value[3].replace(/"/g, ''),
+                bottlecolor: value[4].replace(/"/g, ''),
+                bottleincr: value[5].replace(/"/g, ''),
 
-            document.getElementById('coiffeMat').value = value[4].replace(/"/g, '');
-            document.getElementById('coiffeSize').value = value[5].replace(/"/g, '');
-            document.getElementById('coiffecoll').value = value[6].replace(/"/g, '');
-            document.getElementById('coiffethermo').value = value[7].replace(/"/g, '');
+                coiffeMat: value[6].replace(/"/g, ''),
+                coiffeSize: value[7].replace(/"/g, ''),
+                coiffecoll: value[8].replace(/"/g, ''),
+                coiffethermo: value[9].replace(/"/g, ''),
 
-            document.getElementById('capsuleType').value = value[8].replace(/"/g, '');
-            document.getElementById('capsuleColor').value = value[9].replace(/"/g, '');
-            document.getElementById('bouchonType').value = value[10].replace(/"/g, '');
+                capsuleType: value[10].replace(/"/g, ''),
+                capsuleColor: value[11].replace(/"/g, ''),
+                bouchonType: value[12].replace(/"/g, ''),
 
-            document.getElementById('etiquetteCount').value = value[11].replace(/"/g, '');
-            document.getElementById('etiquetteColor').value = value[12].replace(/"/g, '');
-            document.getElementById('etiquetteEcoInk').value = value[13].replace(/"/g, '');
-            document.getElementById('etiquetteMat').value = value[14].replace(/"/g, '');
-            document.getElementById('etiquetteDor').value = value[15].replace(/"/g, '');
-            document.getElementById('etiquetteColle').value = value[16].replace(/"/g, '');
+                etiquetteCount: value[13].replace(/"/g, ''),
+                etiquetteColor: value[14].replace(/"/g, ''),
+                etiquetteEcoInk: value[15].replace(/"/g, ''),
+                etiquetteMat: value[16].replace(/"/g, ''),
+                etiquetteDor: value[17].replace(/"/g, ''),
+                etiquetteColle: value[18].replace(/"/g, ''),
+                
+                etuisType: value[19].replace(/"/g, ''),
+                etuiWeight: value[20].replace(/"/g, ''),
+                elementsassos: value[21].replace(/"/g, '') === 'Oui',
+                etuisEcoink: value[22].replace(/"/g, '') === 'Oui',
+                etuisBois: value[23].replace(/"/g, '') === 'Oui',
+                etuisPapier: value[24].replace(/"/g, '') === 'Oui',
+                etuisCarton: value[25].replace(/"/g, '') === 'Oui',
+                etuisPlastique: value[26].replace(/"/g, '') === 'Oui',
+                etuisAimant: value[27].replace(/"/g, '') === 'Oui',
 
-            document.getElementById('etuisType').value = value[17].replace(/"/g, '');
-            document.getElementById('etuiWeight').value = value[18].replace(/"/g, '');
-            document.getElementById('elementsassos').checked = value[19].replace(/"/g, '')=== 'Oui';
-            document.getElementById('etuisEcoink').checked = value[20].replace(/"/g, '')=== 'Oui';
-            document.getElementById('etuisBois').checked = value[21].replace(/"/g, '')=== 'Oui';
-            document.getElementById('etuisPapier').checked = value[22].replace(/"/g, '')=== 'Oui';
-            document.getElementById('etuisCarton').checked = value[23].replace(/"/g, '')=== 'Oui';
-            document.getElementById('etuisPlastique').checked = value[24].replace(/"/g, '')=== 'Oui';
-            document.getElementById('etuisAimant').checked = value[25].replace(/"/g, '')=== 'Oui';
+                suremballage: value[28].replace(/"/g, ''),
+                suremballageEcoink: value[29].replace(/"/g, '') === 'Oui',
+                sacPapier: value[30].replace(/"/g, '') === 'Oui',
+                sacCarton: value[31].replace(/"/g, '') === 'Oui',
+                sacPlastique: value[32].replace(/"/g, '') === 'Oui',
+                sacAimant: value[33].replace(/"/g, '') === 'Oui',
 
-            document.getElementById('suremballage').value = value[26].replace(/"/g, '');
-            document.getElementById('suremballageEcoink').checked = value[27].replace(/"/g, '')=== 'Oui';
-            document.getElementById('sacPapier').checked = value[28].replace(/"/g, '')=== 'Oui';
-            document.getElementById('sacCarton').checked = value[29].replace(/"/g, '')=== 'Oui';
-            document.getElementById('sacPlastique').checked = value[30].replace(/"/g, '')=== 'Oui';
-            document.getElementById('sacAimant').checked = value[31].replace(/"/g, '')=== 'Oui';
+                cartonRecycled: value[34].replace(/"/g, ''),
+                cartonCannelure: value[35].replace(/"/g, ''),
+                cartonInter: value[36].replace(/"/g, ''),
+                cartonScotch: value[37].replace(/"/g, ''),
+                cartonDor: value[38].replace(/"/g, ''),
+                cartonInk: value[39].replace(/"/g, ''),
 
-            document.getElementById('cartonRecycled').value = value[32].replace(/"/g, '');
-            document.getElementById('cartonCannelure').value = value[33].replace(/"/g, '');
-            document.getElementById('cartonInter').value = value[34].replace(/"/g, '');
-            document.getElementById('cartonScotch').value = value[35].replace(/"/g, '');
-            document.getElementById('cartonDor').value = value[36].replace(/"/g, '');
-            document.getElementById('cartonInk').value = value[37].replace(/"/g, '');
-
-            document.getElementById('objet').value = value[38].replace(/"/g, '');
-        }
+                objet: value[40].replace(/"/g, '')
+            }
+        };
     });
+
+    // Met à jour le compteur d'ID pour qu'il soit supérieur à l'ID maximum existant
+    if (cuveeData.length > 0) {
+        const maxId = Math.max(...cuveeData.map(cuvee => cuvee.id));
+        cuveeIdCounter = maxId + 1;
+    } else {
+        cuveeIdCounter = 0;
+    }
+
+    // Mettre à jour la liste déroulante avec les noms des cuvées
+    updateCuveeDropdown();
 }

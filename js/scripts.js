@@ -77,70 +77,70 @@ function calculateDiagnosis() {
     let scoremateriaux = 0;
 
     // bouteille (sur 9)
-    if (bottleWeight > 910) scorebottle += 3, scoresobriete += 3;
-    if (bottleWeight > 835 && bottleWeight < 910 && bottleshape === 'standard') scorebottle += 3;//reduction
-    if (bottleWeight > 835 && bottleWeight < 910 && bottleshape === 'speciale') scorebottle += 1;//reduction
-    if (bottlecolor === 'opaque') scorebottle += 3; //recyclage
-    if (bottlecolor === 'blanche') scorebottle += 3;//materiaux
-    if (bottleincr === 'oui') scorebottle += 3;//recyclage
+    if (bottleWeight > 910) scorebottle += 3, scoresobriete += 1;
+    if (bottleWeight > 835 && bottleWeight < 910 && bottleshape === 'standard') scorebottle += 3, scoresobriete += 1;
+    if (bottleWeight > 835 && bottleWeight < 910 && bottleshape === 'speciale') scorebottle += 1, scoresobriete += 1;
+    if (bottlecolor === 'opaque') scorebottle += 3, scorerecyclage += 1;
+    if (bottlecolor === 'blanche') scorebottle += 3, scoremateriaux += 1;
+    if (bottleincr === 'oui') scorebottle += 3, scorerecyclage += 1;
 
     // coiffe (max 8)
-    if (coiffeMat === 'etain') scorecoiffe += 3;//reduction
-    if (coiffeMat === 'alu_epais') scorecoiffe += 1;//reduction
-    if (coiffeMat === 'complexe') scorecoiffe += 1;//reduction
-    if (coiffeSize === 'longue') scorecoiffe += 1;//reduction
-    if (coiffecoll === 'autre' || coiffecoll === 'papier') scorecoiffe += 1;//reduction
-    if (coiffethermo === 'oui') scorecoiffe += 3;//recyclage
+    if (coiffeMat === 'etain') scorecoiffe += 3, scoresobriete += 1;
+    if (coiffeMat === 'alu_epais') scorecoiffe += 1, scoresobriete += 1;
+    if (coiffeMat === 'complexe') scorecoiffe += 1, scoresobriete += 1;
+    if (coiffeSize === 'longue') scorecoiffe += 1, scoresobriete += 1;
+    if (coiffecoll === 'autre' || coiffecoll === 'papier') scorecoiffe += 1, scoresobriete += 1;
+    if (coiffethermo === 'oui') scorecoiffe += 3, scorerecyclage += 1;
 
     // bouchage (max 5)
-    if (capsuleType === 'plastique') scorebouchage += 3;//recyclage
-    if (capsuleColor === 'mono-inf' || capsuleColor === 'poly' || capsuleColor === 'poly-inf') scorebouchage += 1;//reduction
-    if (bouchonType === 'non') scorebouchage += 1;//materiaux
+    if (capsuleType === 'plastique') scorebouchage += 3, scorerecyclage += 1;
+    if (capsuleColor === 'mono-inf' || capsuleColor === 'poly' || capsuleColor === 'poly-inf') scorebouchage += 1, scoresobriete += 1;
+    if (bouchonType === 'non') scorebouchage += 1, scoremateriaux += 1;
 
     // étiquette (max 10)
-    if (etiquetteCount >= 2) scoreetiquette += 1;//reduction
-    if (etiquetteColor >= 3) scoreetiquette += 1;//reduction
-    if (etiquetteEcoInk === 'Oui') scoreetiquette += 1;//reduction
-    if (etiquetteMat === 'papierreshum') scoreetiquette += 1;//materiaux
-    if (etiquetteMat === 'papiercoton' || etiquetteMat === 'métal') scoreetiquette += 3;//materiaux
-    if (etiquetteDor === 'dorurechaud') scoreetiquette += 1;//reduction
-    if (etiquetteColle === 'colleultra') scoreetiquette += 3;//recyclage
+    if (etiquetteCount >= 2) scoreetiquette += 1, scoresobriete += 1;
+    if (etiquetteColor >= 3) scoreetiquette += 1, scoresobriete += 1;
+    if (etiquetteEcoInk === 'Oui') scoreetiquette += 1, scoresobriete += 1;
+    if (etiquetteMat === 'papierreshum') scoreetiquette += 1, scoremateriaux += 1;
+    if (etiquetteMat === 'papiercoton' || etiquetteMat === 'métal') scoreetiquette += 3, scoremateriaux += 1;
+    if (etiquetteDor === 'dorurechaud') scoreetiquette += 1, scoresobriete += 1;
+    if (etiquetteColle === 'colleultra') scoreetiquette += 3, scorerecyclage += 1;
 
     // étuis ou coffrets (max 14)
-    if (etuisType === 'commande') scoreetuis += 1;//reduction
-    if (etuisType === 'systematique') scoreetuis += 3;//reduction
-    if (etuiWeight >= 900) scoreetuis += 1;//reduction
-    if (elementsassos) scoreetuis += 1;//reduction
-    if (etuisEcoink) scoreetuis += 1;//reduction
-    if (etuisBois) scoreetuis += 3;//recyclage
-    if (etuisPapier) scoreetuis += 1;//materiaux
-    if (etuisCarton) scoreetuis += 0;//materiaux
-    if (etuisPlastique) scoreetuis += 1;//materiaux
-    if (etuisAimant) scoreetuis += 3;//recyclage
+    if (etuisType === 'commande') scoreetuis += 1, scoresobriete += 1;
+    if (etuisType === 'systematique') scoreetuis += 3, scoresobriete += 1;
+    if (etuiWeight >= 900) scoreetuis += 1, scoresobriete += 1;
+    if (elementsassos) scoreetuis += 1, scoresobriete += 1;
+    if (etuisEcoink) scoreetuis += 1, scoresobriete += 1;
+    if (etuisBois) scoreetuis += 3, scorerecyclage += 1;
+    if (etuisPapier) scoreetuis += 1, scoremateriaux += 1;
+    if (etuisCarton) scoreetuis += 0, scoremateriaux += 1;
+    if (etuisPlastique) scoreetuis += 1, scoremateriaux += 1;
+    if (etuisAimant) scoreetuis += 3, scorerecyclage += 1;
 
     // suremballage (max 9)
-    if (suremballage === 'sac_sur_demande') scoresuremb += 1;//reduction
-    if (suremballage === 'sac_systematique') scoresuremb += 3;//reduction
-    if (suremballageEcoink) scoresuremb += 1;//reduction
-    if (sacPapier) scoresuremb += 1;//materiaux
-    if (sacPlastique) scoresuremb += 1;//materiaux
-    if (sacAimant) scoresuremb += 3;//recyclage
+    if (suremballage === 'sac_sur_demande') scoresuremb += 1, scoresobriete += 1;
+    if (suremballage === 'sac_systematique') scoresuremb += 3, scoresobriete += 1;
+    if (suremballageEcoink) scoresuremb += 1, scoresobriete += 1;
+    if (sacPapier) scoresuremb += 1, scoremateriaux += 1;
+    if (sacPlastique) scoresuremb += 1, scoremateriaux += 1;
+    if (sacAimant) scoresuremb += 3, scorerecyclage += 1;
     
     // carton (max 8)
-    if (cartonRecycled === 'non') scorecarton += 1;//materiaux
+    if (cartonRecycled === 'non') scorecarton += 1, scoremateriaux += 1;
     if (cartonCannelure === 'A' 
         || cartonCannelure === 'B'
         || cartonCannelure === 'C'
         || cartonCannelure === 'D'
-        || cartonCannelure === 'E') scorecarton += 1;//reduction
-    if (cartonInter === 'plastique') scorecarton += 3;//materiaux
-    if (cartonInter === 'carton') scorecarton += 1;//materiaux
-    if (cartonScotch === 'plastique') scorecarton += 1;//materiaux
-    if (cartonDor === 'dorurechaud') scorecarton += 1;//reduction
-    if (cartonInk === 'huileminerale') scorecarton += 1;//materiaux
+        || cartonCannelure === 'E') scorecarton += 1, scoresobriete += 1;
+    if (cartonInter === 'plastique') scorecarton += 3, scoremateriaux += 1;
+    if (cartonInter === 'carton') scorecarton += 1, scoremateriaux += 1;
+    if (cartonScotch === 'plastique') scorecarton += 1, scoremateriaux += 1;
+    if (cartonDor === 'dorurechaud') scorecarton += 1, scoresobriete += 1;
+    if (cartonInk === 'huileminerale') scorecarton += 1, scoremateriaux += 1;
 
     // objet (max 3)
-    if (objet === 'oui') scoreobjet += 3;//reduction
+    if (objet === 'oui') scoreobjet += 3, scoresobriete += 1;
 
     score = Math.round ((1 - ((scorebottle + scorecoiffe + scorebouchage + scoreetiquette + scoreetuis + scoresuremb +scorecarton + scoreobjet) / 66)) * 100)
 
@@ -153,12 +153,17 @@ function calculateDiagnosis() {
     scorecarton = Math.round ((1-(scorecarton/8))*100);
     scoreobjet = Math.round ((1-(scoreobjet/3))*100);
 
+    scoresobriete = Math.round ((1-(scoresobriete/18))*100);
+    scorerecyclage = Math.round ((1-(scorerecyclage/7))*100);
+    scoremateriaux = Math.round ((1-(scoremateriaux/12))*100);
+
     console.log("Calculated Score:", score);
 
     // Affichage des résultats
 
     const diagnosisResult = document.getElementById('diagnosisResult');
     diagnosisResult.innerHTML = `Votre EmbaScore est de ${score} %.<br><br>
+    
     Bouteille : ${scorebottle} %<br>
     Coiffe : ${scorecoiffe} %<br>
     Bouchage : ${scorebouchage} %<br>
@@ -166,10 +171,14 @@ function calculateDiagnosis() {
     Etuis : ${scoreetuis} %<br>
     Suremballage : ${scoresuremb} %<br>
     Cartons : ${scorecarton} %<br>
-    Objets Pub : ${scoreobjet} %<br>`;
+    Objets Pub : ${scoreobjet} %<br><br>
+    
+    Sobriété : ${scoresobriete} %<br>
+    Recyclage : ${scorerecyclage} %<br>
+    Matériaux : ${scoremateriaux} %<br>`;
 
     if (bottleWeight > 910) {
-        diagnosisResult.innerHTML += '<br><br>Baisser le poids de la bouteille, à minima sous les 900g.';
+        diagnosisResult.innerHTML += '<br>Baisser le poids de la bouteille, à minima sous les 900g.';
     } else if (bottleWeight < 910 && bottleWeight > 835 && bottleshape === 'standard') {
         diagnosisResult.innerHTML += '<br>En bouteille standard, vous devez vous approcher des 800-835g.';
     } else if (bottleWeight < 836 && bottleshape === 'standard') {
@@ -206,27 +215,6 @@ for (let i = 0; i < accordions.length; i++) {
 
 function viewPDF() {
     window.open('media/plan-de-prevention-commun-champagne_2023.pdf', '_blank');
-}
-
-function createNewCuvee() {
-    const newCuveeName = document.getElementById('newCuveeName').value;
-    if (!newCuveeName) {
-        alert('Veuillez entrer un nom pour la nouvelle cuvée.');
-        return;
-    }
-    // Initialiser la nouvelle cuvée avec un score de 0 ou une autre valeur par défaut
-    cuvees[newCuveeName] = 0;
-    console.log(`Nouvelle cuvée créée: ${newCuveeName}`);
-    alert(`Nouvelle cuvée créée: ${newCuveeName}`);
-}
-
-// Exemple de fonction supplémentaire qui pourrait être dans votre script original
-function resetForm() {
-    document.getElementById('diagnosticForm').reset();
-    const resultDiv = document.getElementById('result');
-    if (resultDiv) {
-        resultDiv.innerHTML = '';
-    }
 }
 
 // Ajouter des écouteurs d'événements pour les actions utilisateur

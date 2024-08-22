@@ -6,17 +6,47 @@
     <title>Diagnostic Éco-conception</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="media/CIVC_Sign_Q.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="header">
         <img src="media/logo-large@2x.png" alt="Adelphe Logo"><img src="media/CIVC_Sign_Q.png" alt="CIVC Logo">&nbsp Outil d'Éco-conception des emballages en Champagne
     </div>
+
     <div id="cuveeContainer">
-        <input type="text" id="NewCuveeName" placeholder="Nom de la cuvée">
-        <input type="number" id="NewCuveeNb" placeholder="Nb de bouteille / an">
-        <button type="button_cuvee" id="button_cuvee" onclick="createNewCuvee()">Ajouter</button>
+        <button type="button_cuvee" onclick="saveDiagnostic()">Sauvegarder le diagnostic</button>
+
+        <select id="cuveeSelect" onchange="loadCuveeData()">
+            <option value="" disabled selected>Choisissez une cuvée</option>
+        </select>
+
+        <button type="button_cuvee" id="button_cuvee" onclick="openPopup()">Modifier ma gamme</button>
     </div>
-    <div class="container-wrapper">
+
+    <div id="cuveePopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Gamme de la maison</h2>
+            <table id="cuveeTable">
+                <thead>
+                    <tr>
+                        <th>Nom de la cuvée</th>
+                        <th>Nombre de bouteille / an</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td contenteditable="true" placeholder="Nom de la cuvée"></td>
+                        <td contenteditable="true" placeholder="Nombre de bouteille / an"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" onclick="addNewRow()">Ajouter</button>
+            <button type="button" onclick="saveCuvees()">Sauvegarder</button>
+        </div>
+    </div>
+
+    <div class="container-wrapper" id="diagnosticFormContainer">      
         <div class="container">
             <form id="diagnosticForm">
                 <div class="section" alt="bouteille">
@@ -313,11 +343,11 @@
                     </div>
                 </div>
             </form>
+            
         </div>
-
         <div class="container" alt="calculs">
-            <button type="button_diag" onclick="calculateDiagnosis()">Lancer le diagnostic</button>           
-            <button type="button_save" onclick="saveResults()">Enregistrer les résultats</button>
+            <button type="button_diag" onclick="calculateDiagnosis()">Calculer les résultats</button>           
+            <button type="button_save" onclick="saveResults()">Exporter les résultats (.csv)</button>
             <button type="button_save" onclick="document.getElementById('csvFileInput').click()">Charger des résultats (.csv)</button>
             <button type="button_pdf" onclick="viewPDF()">Afficher le plan de prévention et d'écoconception : Filière Champagne</button>
         </div>
@@ -331,5 +361,6 @@
     </div>
     <script src="js/scripts.js"></script>
     <script src="js/saveResults.js"></script>
+    <script src="js/poptabledata.js"></script>
 </body>
 </html>

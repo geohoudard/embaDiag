@@ -7,9 +7,7 @@ body {
 }
 
 .header {
-    margin-left: 5px;
-    margin: 20px 0;
-    margin-left: 5px;
+    margin: 15px;
     height: auto;
     text-align: center;
     font-weight: 700;
@@ -45,7 +43,11 @@ body {
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    display: inline-block;
+    justify-content: center;
+    justify-items: center;
+    position: relative;
+    align-items: center;
+    align-content: middle;
 }
 
 #cuveeContainer {
@@ -72,7 +74,11 @@ h1 {
     color: #070707; 
     margin-bottom: 20px;
 }
-
+h2 {
+    text-align: center;
+    color: #004e83; 
+    margin-bottom: 20px;
+}
 .accordion {
     background-color: #0077c8; /* Couleur adaptée au logo Adelphe */
     color: white;
@@ -175,7 +181,7 @@ button[type="button_diag"] {
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 button[type="button_diag"]:hover {
     background: #ffc1078c; 
@@ -183,17 +189,17 @@ button[type="button_diag"]:hover {
 }
 
 button[type="button_cuvee"] {
-    display: block;
-    height: 40px;
-    width: 100px;
-    margin-right: 5px;
+    width: 15%;
+    margin: 15px;
     background: #a7dcff; 
     text-align: center;
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
+    border-width: 20px;
+    border:solid;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 button[type="button_cuvee"]:hover {
@@ -207,6 +213,7 @@ button[type="button_pdf"] {
     padding: 15px;
     background: #ffc10700; 
     text-align: center;
+    text-align: justify;
     color: rgb(0, 0, 0);
     font-weight: 300;
     font-style: italic;
@@ -216,7 +223,7 @@ button[type="button_pdf"] {
     border-radius: 20px;
     cursor: pointer;
     font-size: 12px;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 button[type="button_pdf"]:hover {
     background: #ffc1078c; 
@@ -226,6 +233,7 @@ button[type="button_pdf"]:hover {
 button[type="button_save"] {
     display: block;
     width: 100%;
+    height: 10%;
     padding: 15px;
     background: #ff9307; 
     text-align: center;
@@ -234,8 +242,12 @@ button[type="button_save"] {
     border:rgb(0, 0, 0);
     border-radius: 20px;
     cursor: pointer;
-    font-size: 14px;
-    margin-top: 15px;
+    font-size: 12px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
 }
 button[type="button_save"]:hover {
     background: #ffc1078c; 
@@ -243,8 +255,8 @@ button[type="button_save"]:hover {
 }
 
 #results {
-    margin-top: 30px;
-    padding: 15px;
+    margin-top: 5px;
+    padding: 5px;
     background: #e9ecef;
     border-radius: 5px;
     border: 1px solid #ced4da;
@@ -260,4 +272,55 @@ input[type="number"]:focus, select:focus {
     border-color: #0077c8; /* Couleur adaptée au logo Adelphe */
     outline: none;
     box-shadow: 0 0 5px rgba(0, 119, 200, 0.5); /* Effet de mise au point adapté */
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
 }
