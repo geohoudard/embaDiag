@@ -18,7 +18,7 @@ Ce projet est un outil d'éco-conception destiné à la filière Champagne. Il p
 - **css/styles.css** : Fichier CSS contenant les styles pour l'interface utilisateur.
 - **js/poptabledata.js** : Script JavaScript gérant l'affichage dynamique des tableaux et popups.
 - **js/saveResults.js** : Script JavaScript gérant la sauvegarde, l'exportation, et l'importation des données sous forme de fichiers CSV.
-- **js/scripts.js** : Script JavaScript contenant des fonctions supplémentaires pour l'interaction avec l'utilisateur.
+- **js/scripts.js** : Script JavaScript contenant les fonctions de calcul de résultat et d'affichage dans l'interface.
 - **media/** : Dossier contenant les images utilisées dans l'interface utilisateur.
 
 ## Utilisation
@@ -28,7 +28,10 @@ Ce projet est un outil d'éco-conception destiné à la filière Champagne. Il p
    - Remplissez les champs requis, puis cliquez sur "Sauvegarder" pour ajouter la cuvée à la liste.
 
 2. **Sauvegarder les diagnostics** :
-   - Une fois les diagnostics renseignés pour chaque cuvée, cliquez sur "Sauvegarder" pour générer un fichier CSV contenant toutes les informations.
+   - Une fois les diagnostics renseignés pour chaque cuvée, cliquez sur "Sauvegarder les diagnostics" enregistrer les données associées à la cuvée.
+
+2. **Exporter les résultats** :
+   - Utilisez le bouton d'exportation pour générer un fichier CSV contenant toutes les informations.
 
 3. **Importer des diagnostics** :
    - Utilisez le bouton d'importation pour charger un fichier CSV contenant des diagnostics précédemment sauvegardés. Les cuvées existantes seront mises à jour, et les nouvelles cuvées seront ajoutées.
