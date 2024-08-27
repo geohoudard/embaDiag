@@ -16,9 +16,9 @@ Ce projet est un outil d'éco-conception destiné à la filière Champagne. Il p
 
 - **index.html** : La page principale de l'application web.
 - **css/styles.css** : Fichier CSS contenant les styles pour l'interface utilisateur.
-- **js/poptabledata.js** : Script JavaScript gérant l'affichage dynamique des tableaux et popups.
+- **js/poptabledata.js** : Script JavaScript gérant l'affichage dynamique des tableaux et popups/infobulles.
 - **js/saveResults.js** : Script JavaScript gérant la sauvegarde, l'exportation, et l'importation des données sous forme de fichiers CSV.
-- **js/scripts.js** : Script JavaScript contenant les fonctions de calcul de résultat et d'affichage dans l'interface.
+- **js/scripts.js** : Script JavaScript contenant les fonctions de calcul de résultats et d'affichage dans l'interface.
 - **media/** : Dossier contenant les images utilisées dans l'interface utilisateur.
 
 ## Utilisation
@@ -46,4 +46,4 @@ Pour déployer cette application, il suffit de placer les fichiers sur un serveu
 
 ## Auteur
 
-Développé par [Votre Nom ou Entreprise].
+Développé par le Comité Champagne dans le cadre du déploiement de son guide et plan de prévention et d'éco-conception des emballages.
