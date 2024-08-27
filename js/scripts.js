@@ -159,8 +159,12 @@ function calculateDiagnosis() {
 
     console.log("Calculated Score:", score);
 
-    // Affichage des résultats
+    // Mise à jour des indicateurs visuels
+    setScoreIndicator("Sobriété-indicator", scoresobriete); 
+    setScoreIndicator("Recyclage-indicator", scorerecyclage); 
+    setScoreIndicator("Matériaux-indicator", scoremateriaux);
 
+    // Affichage des résultats
     const diagnosisResult = document.getElementById('diagnosisResult');
     diagnosisResult.innerHTML = `Votre EmbaScore est de ${score} %.<br><br>
     
@@ -171,11 +175,8 @@ function calculateDiagnosis() {
     Etuis : ${scoreetuis} %<br>
     Suremballage : ${scoresuremb} %<br>
     Cartons : ${scorecarton} %<br>
-    Objets Pub : ${scoreobjet} %<br><br>
-    
-    Sobriété : ${scoresobriete} %<br>
-    Recyclage : ${scorerecyclage} %<br>
-    Matériaux : ${scoremateriaux} %<br>`;
+    Objets Pub : ${scoreobjet} %<br>
+    `; 
 
     if (bottleWeight > 910) {
         diagnosisResult.innerHTML += '<br>Baisser le poids de la bouteille, à minima sous les 900g.';
@@ -186,6 +187,15 @@ function calculateDiagnosis() {
     } else {
         diagnosisResult.innerHTML += '<br>Pratique optimale.';
     }
+
+    const indicesobriete = document.getElementById('indicesobriete');
+    indicesobriete.innerHTML = `Sobriété : ${scoresobriete} %`;
+
+    const indicerecyclage = document.getElementById('indicerecyclage');
+    indicerecyclage.innerHTML = `Recyclage : ${scorerecyclage} %`;
+
+    const indicemateriaux = document.getElementById('indicemateriaux');
+    indicemateriaux.innerHTML = `Matériaux : ${scoremateriaux} %`;
 }
 
 // Accordéon
@@ -212,7 +222,6 @@ for (let i = 0; i < accordions.length; i++) {
 }
 
 // Affichage du plan d'Eco-conception Adelphe CIVC
-
 function viewPDF() {
     window.open('media/plan-de-prevention-commun-champagne_2023.pdf', '_blank');
 }
@@ -222,3 +231,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('calculateButton').addEventListener('click', calculateDiagnosis);
     document.getElementById('resetButton').addEventListener('click', resetForm);
 });
+
+// Barres de couleurs de score : position du curseur
+function setScoreIndicator(id, scorecolor) {
+    const indicator = document.getElementById(id);
+    const barWidth = 250;
+    const position = (1-(scorecolor/100)) * barWidth;
+    indicator.style.left = `${position}px`;
+}

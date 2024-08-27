@@ -72,12 +72,17 @@
                             <option value="blanche">Blanche</option>
                         </select>
                     
-                        <label for="bottleincr">Incrustations dans le verre :</label>
+                        <label for="bottleincr">Incrustations dans le verre :
+                            <span class="tooltip-icon" data-tooltip="<img src='media/bouteille.png' alt='Info sur le poids de la bouteille' style='max-width: 200px;'>texte">
+                                &#9432;
+                            </span>
+                        </label>
                         <select id="bottleincr" name="bottleincr">
                             <option value="0"></option>
                             <option value="non">Non</option>
                             <option value="oui">Oui</option>
                         </select>
+                        
                     </div>
                 </div>
                 
@@ -354,8 +359,39 @@
         <div class="container" alt="resultats">
             <div id="results">
                 <h4>Résultats du Diagnostic</h4>
+                
                 <input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="loadCSV(event)">
                 <p id="diagnosisResult">L'objectif est d'approcher le score de 0.<br>Les points d'améliorations seront listés sous le score.</p>
+
+                <div class="score-container">
+                    <div class="score-label" id="indicesobriete">Sobriété</div>
+                    <div class="score-bar">
+                        <div class="score-section greendark"></div>
+                        <div class="score-section green"></div>
+                        <div class="score-section yellow"></div>
+                        <div class="score-section orange"></div>
+                        <div class="score-section red"></div>
+                        <div class="score-indicator" id="Sobriété-indicator"></div>
+                    </div>
+                    <div class="score-label" id="indicerecyclage">Recyclage</div>
+                    <div class="score-bar">
+                        <div class="score-section greendark"></div>
+                        <div class="score-section green"></div>
+                        <div class="score-section yellow"></div>
+                        <div class="score-section orange"></div>
+                        <div class="score-section red"></div>
+                        <div class="score-indicator" id="Recyclage-indicator"></div>
+                    </div>              
+                    <div class="score-label" id="indicemateriaux">Matériaux</div>
+                    <div class="score-bar">
+                        <div class="score-section greendark"></div>
+                        <div class="score-section green"></div>
+                        <div class="score-section yellow"></div>
+                        <div class="score-section orange"></div>
+                        <div class="score-section red"></div>
+                        <div class="score-indicator" id="Matériaux-indicator"></div>
+                    </div>
+                </div>
             </div>
         </div>        
     </div>

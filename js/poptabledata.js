@@ -214,3 +214,31 @@ function saveDiagnostic() {
         alert("Veuillez sélectionner une cuvée valide.");
     }
 }
+
+// Infobulles
+
+document.addEventListener('DOMContentLoaded', function() {
+    const tooltips = document.querySelectorAll('.tooltip-icon');
+
+    tooltips.forEach(function(tooltip) {
+        tooltip.addEventListener('mouseenter', function() {
+            let tooltipText = this.getAttribute('data-tooltip');
+            let tooltipBox = document.createElement('div');
+            tooltipBox.className = 'tooltip-box';
+            tooltipBox.innerHTML = tooltipText;
+            document.body.appendChild(tooltipBox);
+            
+            let rect = this.getBoundingClientRect();
+            tooltipBox.style.top = rect.top + window.scrollY - tooltipBox.offsetHeight - 10 + 'px';
+            tooltipBox.style.left = rect.left + window.scrollX + 'px';
+            tooltipBox.style.display = 'block';
+        });
+
+        tooltip.addEventListener('mouseleave', function() {
+            let tooltipBox = document.querySelector('.tooltip-box');
+            if (tooltipBox) {
+                tooltipBox.remove();
+            }
+        });
+    });
+});

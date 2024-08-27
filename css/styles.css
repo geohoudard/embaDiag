@@ -324,3 +324,98 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+
+.score-container {
+    font-family: Arial, sans-serif;
+}
+
+.score-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.score-bar {
+    position: relative;
+    display: flex;
+    height: 10px;
+    width: 200px;
+}
+
+.score-section {
+    height: 100%;
+}
+
+.greendark {
+    background-color: #008d00;
+    width: 20%;
+}
+
+.green {
+    background-color: #00FF00;
+    width: 20%;
+}
+
+.yellow {
+    background-color: #FFFF00;
+    width: 20%;
+}
+
+.orange {
+    background-color: #FFA500;
+    width: 20%;
+}
+
+.red {
+    background-color: #FF0000;
+    width: 20%;
+}
+
+.score-indicator {
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip-icon {
+    position: relative;
+    cursor: pointer;
+    color: #3498db;
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.tooltip-box {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    z-index: 10000;
+    display: none;
+    max-width: 300px; /* Augmenté pour accueillir l'image */
+}
+
+.tooltip-box img {
+    max-width: 50px;
+    height: auto;
+    display: block;
+    margin-bottom: 5px; /
+}
+
+.tooltip-box::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
