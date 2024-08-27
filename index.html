@@ -348,51 +348,83 @@
                     </div>
                 </div>
             </form>
-            
         </div>
         <div class="container" alt="calculs">
             <button type="button_diag" onclick="calculateDiagnosis()">Calculer les résultats</button>           
             <button type="button_save" onclick="saveResults()">Exporter les résultats (.csv)</button>
             <button type="button_save" onclick="document.getElementById('csvFileInput').click()">Charger des résultats (.csv)</button>
-            <button type="button_pdf" onclick="viewPDF()">Afficher le plan de prévention et d'écoconception : Filière Champagne</button>
+            <button type="button_pdf" onclick="viewPDF()"><img src="media/Logo_pdf.png" class="button-icon" alt="Icon"></button>
         </div>
         <div class="container" alt="resultats">
-            <div id="results">
-                <h4>Résultats du Diagnostic</h4>
-                
-                <input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="loadCSV(event)">
-                <p id="diagnosisResult">L'objectif est d'approcher le score de 0.<br>Les points d'améliorations seront listés sous le score.</p>
-
-                <div class="score-container">
-                    <div class="score-label" id="indicesobriete">Sobriété</div>
-                    <div class="score-bar">
-                        <div class="score-section greendark"></div>
-                        <div class="score-section green"></div>
-                        <div class="score-section yellow"></div>
-                        <div class="score-section orange"></div>
-                        <div class="score-section red"></div>
-                        <div class="score-indicator" id="Sobriété-indicator"></div>
+            <div id="diagnosisResult" class="result-container">
+                <div class="score-overview">
+                    <h2>Votre EmbaScore est de <span class="main-score" id="embascore"></span></h2>
+                </div>
+                <div class="details">
+                    <div class="detail-item">
+                        <span class="label">Bouteille :</span><span class="value" id="indicebottle"></span>
                     </div>
-                    <div class="score-label" id="indicerecyclage">Recyclage</div>
-                    <div class="score-bar">
-                        <div class="score-section greendark"></div>
-                        <div class="score-section green"></div>
-                        <div class="score-section yellow"></div>
-                        <div class="score-section orange"></div>
-                        <div class="score-section red"></div>
-                        <div class="score-indicator" id="Recyclage-indicator"></div>
-                    </div>              
-                    <div class="score-label" id="indicemateriaux">Matériaux</div>
-                    <div class="score-bar">
-                        <div class="score-section greendark"></div>
-                        <div class="score-section green"></div>
-                        <div class="score-section yellow"></div>
-                        <div class="score-section orange"></div>
-                        <div class="score-section red"></div>
-                        <div class="score-indicator" id="Matériaux-indicator"></div>
+                    <div class="detail-item">
+                        <span class="label">Coiffe :</span><span class="value" id="indicecoiffe"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Bouchage :</span><span class="value" id="indicebouchage"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Etiquette :</span><span class="value" id="indiceetiquette"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Etuis :</span><span class="value" id="indiceetuis"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Suremballage :</span><span class="value" id="indicesuremb"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Cartons :</span><span class="value" id="indicecarton"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Objets Pub :</span><span class="value" id="indiceobjet"></span>
                     </div>
                 </div>
+            </div> 
+            <div class="score-container">
+                <div class="score-label" id="indicesobriete">Sobriété</div>
+                <div class="score-bar">
+                        <div class="score-section red"></div>
+                        <div class="score-section orange"></div>
+                        <div class="score-section yellow"></div>
+                        <div class="score-section green"></div>
+                        <div class="score-section greendark"></div>
+                        <div class="score-indicator" id="Sobriété-indicator"></div>
+                </div>
+                <div class="score-label" id="indicerecyclage">Recyclage</div>
+                <div class="score-bar">
+                        <div class="score-section red"></div>
+                        <div class="score-section orange"></div>
+                        <div class="score-section yellow"></div>
+                        <div class="score-section green"></div>
+                        <div class="score-section greendark"></div>
+                        <div class="score-indicator" id="Recyclage-indicator"></div>
+                </div>              
+                <div class="score-label" id="indicemateriaux">Matériaux</div>
+                <div class="score-bar">
+                        <div class="score-section red"></div>
+                        <div class="score-section orange"></div>
+                        <div class="score-section yellow"></div>
+                        <div class="score-section green"></div>
+                        <div class="score-section greendark"></div>
+                        <div class="score-indicator" id="Matériaux-indicator"></div>
+                </div>
             </div>
+            <div class="co2-container">
+                <img src="media/gaz-carbonique.png" class="co2-icon">
+                <p id="indicecarbone"></p>
+            </div>
+            <div id="results">
+                <h4>Points d'améliorations :</h4>
+                <input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="loadCSV(event)">
+                <p id="diagnosisAdvise"></p>
+            </div>   
         </div>        
     </div>
     <script src="js/scripts.js"></script>

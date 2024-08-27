@@ -76,6 +76,8 @@ function calculateDiagnosis() {
     let scorerecyclage = 0;
     let scoremateriaux = 0;
 
+    let scorecarbone = 0;
+
     // bouteille (sur 9)
     if (bottleWeight > 910) scorebottle += 3, scoresobriete += 1;
     if (bottleWeight > 835 && bottleWeight < 910 && bottleshape === 'standard') scorebottle += 3, scoresobriete += 1;
@@ -85,9 +87,13 @@ function calculateDiagnosis() {
     if (bottleincr === 'oui') scorebottle += 3, scorerecyclage += 1;
 
     // coiffe (max 8)
-    if (coiffeMat === 'etain') scorecoiffe += 3, scoresobriete += 1;
-    if (coiffeMat === 'alu_epais') scorecoiffe += 1, scoresobriete += 1;
+    if (coiffeMat === 'etain') scorecoiffe += 3, scoresobriete += 1, scorecarbone += 48.1;
+    if (coiffeMat === 'alu_epais') scorecoiffe += 1, scoresobriete += 1, scorecarbone += 9.2;
     if (coiffeMat === 'complexe') scorecoiffe += 1, scoresobriete += 1;
+    if (coiffeMat === 'complexe' && coiffeSize === 'longue') scorecarbone += 17.8;
+    if (coiffeMat === 'complexe'&& coiffeSize === 'courte') scorecarbone += 10.2;
+    if (coiffeMat === 'papier' && coiffeSize === 'longue') scorecarbone += 2.3;
+    if (coiffeMat === 'papier'&& coiffeSize === 'courte') scorecarbone += 1.2;
     if (coiffeSize === 'longue') scorecoiffe += 1, scoresobriete += 1;
     if (coiffecoll === 'autre' || coiffecoll === 'papier') scorecoiffe += 1, scoresobriete += 1;
     if (coiffethermo === 'oui') scorecoiffe += 3, scorerecyclage += 1;
@@ -159,34 +165,25 @@ function calculateDiagnosis() {
 
     console.log("Calculated Score:", score);
 
-    // Mise à jour des indicateurs visuels
-    setScoreIndicator("Sobriété-indicator", scoresobriete); 
-    setScoreIndicator("Recyclage-indicator", scorerecyclage); 
-    setScoreIndicator("Matériaux-indicator", scoremateriaux);
+    const embascore = document.getElementById('embascore');
+    embascore.innerHTML = `${score} %`;
 
-    // Affichage des résultats
-    const diagnosisResult = document.getElementById('diagnosisResult');
-    diagnosisResult.innerHTML = `Votre EmbaScore est de ${score} %.<br><br>
-    
-    Bouteille : ${scorebottle} %<br>
-    Coiffe : ${scorecoiffe} %<br>
-    Bouchage : ${scorebouchage} %<br>
-    Etiquette : ${scoreetiquette} %<br>
-    Etuis : ${scoreetuis} %<br>
-    Suremballage : ${scoresuremb} %<br>
-    Cartons : ${scorecarton} %<br>
-    Objets Pub : ${scoreobjet} %<br>
-    `; 
-
-    if (bottleWeight > 910) {
-        diagnosisResult.innerHTML += '<br>Baisser le poids de la bouteille, à minima sous les 900g.';
-    } else if (bottleWeight < 910 && bottleWeight > 835 && bottleshape === 'standard') {
-        diagnosisResult.innerHTML += '<br>En bouteille standard, vous devez vous approcher des 800-835g.';
-    } else if (bottleWeight < 836 && bottleshape === 'standard') {
-        diagnosisResult.innerHTML += '<br>Votre format et poids de bouteille sont optimaux.';
-    } else {
-        diagnosisResult.innerHTML += '<br>Pratique optimale.';
-    }
+    const indicebottle = document.getElementById('indicebottle');
+    indicebottle.innerHTML = `${scorebottle} %`;
+    const indicecoiffe = document.getElementById('indicecoiffe');
+    indicecoiffe.innerHTML = `${scorecoiffe} %`;
+    const indicebouchage = document.getElementById('indicebouchage');
+    indicebouchage.innerHTML = `${scorebouchage} %`;
+    const indiceetiquette = document.getElementById('indiceetiquette');
+    indiceetiquette.innerHTML = `${scoreetiquette} %`;
+    const indiceetuis = document.getElementById('indiceetuis');
+    indiceetuis.innerHTML = `${scoreetuis} %`;
+    const indicesuremb = document.getElementById('indicesuremb');
+    indicesuremb.innerHTML = `${scoresuremb} %`;
+    const indicecarton = document.getElementById('indicecarton');
+    indicecarton.innerHTML = `${scorecarton} %`;
+    const indiceobjet = document.getElementById('indiceobjet');
+    indiceobjet.innerHTML = `${scoreobjet} %`;
 
     const indicesobriete = document.getElementById('indicesobriete');
     indicesobriete.innerHTML = `Sobriété : ${scoresobriete} %`;
@@ -196,6 +193,27 @@ function calculateDiagnosis() {
 
     const indicemateriaux = document.getElementById('indicemateriaux');
     indicemateriaux.innerHTML = `Matériaux : ${scoremateriaux} %`;
+
+    const indicecarbone = document.getElementById('indicecarbone');
+    indicecarbone.innerHTML = `Empreinte carbone :<br>${scorecarbone} gCO2e / Bouteille`;
+
+    // Mise à jour des indicateurs visuels
+    setScoreIndicator("Sobriété-indicator", scoresobriete); 
+    setScoreIndicator("Recyclage-indicator", scorerecyclage); 
+    setScoreIndicator("Matériaux-indicator", scoremateriaux);
+
+    // Affichage des conseils d'améioration
+    const diagnosisAdvise = document.getElementById('diagnosisAdvise');
+    diagnosisAdvise.innerHTML = "";
+    if (bottleWeight > 910) {
+        diagnosisAdvise.innerHTML += 'Baisser le poids de la bouteille, à minima sous les 900g.';
+    } else if (bottleWeight < 910 && bottleWeight > 835 && bottleshape === 'standard') {
+        diagnosisAdvise.innerHTML += 'En bouteille standard, vous devez vous approcher des 800-835g.';
+    } else if (bottleWeight < 836 && bottleshape === 'standard') {
+        diagnosisAdvise.innerHTML += 'Votre format et poids de bouteille sont optimaux.';
+    } else {
+        diagnosisAdvise.innerHTML += 'Pratique optimale.';
+    }
 }
 
 // Accordéon
@@ -235,7 +253,31 @@ document.addEventListener('DOMContentLoaded', function() {
 // Barres de couleurs de score : position du curseur
 function setScoreIndicator(id, scorecolor) {
     const indicator = document.getElementById(id);
-    const barWidth = 250;
-    const position = (1-(scorecolor/100)) * barWidth;
+    const barWidth = 200;
+    const position = (scorecolor/100) * barWidth;
     indicator.style.left = `${position}px`;
+}
+
+function createPieChart(canvasId, score) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Score', 'Restant'],
+            datasets: [{
+                data: [score, 100 - score],
+                backgroundColor: ['#ff6384', '#dddddd'],
+                hoverBackgroundColor: ['#ff6384', '#eeeeee']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
 }
