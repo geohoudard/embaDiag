@@ -481,3 +481,62 @@ th {
     border-style: solid;
     border-color: #333 transparent transparent transparent;
 }
+
+@media only screen and (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        margin: 10px;
+    }
+
+    .header img {
+        max-width: 200px;
+        max-height: 60px;
+        margin: 0 auto; /* Center the images on small screens */
+    }
+
+    .container-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    button[type="button_cuvee"] {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .result-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    input[type="number"], input[type="text"], select {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .header img {
+        max-width: 250px;
+        max-height: 70px;
+    }
+
+    .container {
+        width: 45%;
+    }
+
+    .result-container {
+        width: 80%;
+    }
+}
