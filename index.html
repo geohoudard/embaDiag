@@ -20,7 +20,7 @@
     </div>
     <div id="cuveePopup" class="popup">
         <div class="popup-content">
-            <span class="close" onclick="closePopup()">&times;</span>
+            <span class="close" onclick="closePopup();saveCuvees()">&times;</span>
             <h2>Gamme de la maison</h2>
             <table id="cuveeTable">
                 <thead>
@@ -36,8 +36,7 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button" onclick="addNewRow()">Ajouter</button>
-            <button type="button" onclick="saveCuvees()">Sauvegarder</button>
+            <button type="button" onclick="addNewRow()">Ajouter une cuvée</button>
         </div>
     </div>
     <div class="container-wrapper" id="diagnosticFormContainer">      

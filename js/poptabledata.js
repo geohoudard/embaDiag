@@ -216,7 +216,6 @@ function saveDiagnostic() {
 
         selectedCuvee.diagnostic = diagnostic;
 
-        alert("Diagnostic sauvegardé pour la cuvée : " + selectedCuvee.name);
     } else {
         alert("Veuillez sélectionner une cuvée valide.");
     }

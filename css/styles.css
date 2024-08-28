@@ -306,10 +306,11 @@ input[type="number"]:focus, select:focus {
 }
 
 .popup-content {
-    background-color: #fefefe;
+    background-color: #fefefed8;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
+    border-radius: 20px;
     width: 80%;
     max-width: 500px;
 }
@@ -331,6 +332,8 @@ input[type="number"]:focus, select:focus {
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #ffffff;
+    margin-bottom: 10px;
 }
 
 th, td {
