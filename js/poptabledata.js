@@ -36,6 +36,7 @@ function saveCuvees() {
 
 function openPopup() {
     // Affiche la pop-up
+
     document.getElementById("cuveePopup").style.display = "block";
 
     // Efface le contenu actuel du tableau
@@ -115,8 +116,10 @@ function loadCuveeData() {
 
         document.getElementById("etiquetteCount").value = diagnostic.etiquetteCount || "";
         document.getElementById("etiquetteColor").value = diagnostic.etiquetteColor || "";
-        document.getElementById("etiquetteEcoInk").value = diagnostic.etiquetteEcoInk || "0";
+        document.getElementById("etiquetteEcoInk").checked = diagnostic.etiquetteEcoInk || false;
         document.getElementById("etiquetteMat").value = diagnostic.etiquetteMat || "0";
+        document.getElementById("etiquettecontreMat").value = diagnostic.etiquettecontreMat || "0";
+        document.getElementById("papierreshum").checked = diagnostic.papierreshum || false;
         document.getElementById("etiquetteDor").value = diagnostic.etiquetteDor || "0";
         document.getElementById("etiquetteColle").value = diagnostic.etiquetteColle || "0";
 
@@ -124,9 +127,10 @@ function loadCuveeData() {
         document.getElementById("etuiWeight").value = diagnostic.etuiWeight || "";
         document.getElementById("elementsassos").checked = diagnostic.elementsassos || false;
         document.getElementById("etuisEcoink").checked = diagnostic.etuisEcoink || false;
-        document.getElementById("etuisBois").checked = diagnostic.etuisBois || false;
+        document.getElementById("etuissilkpaper").checked = diagnostic.etuissilkpaper || false;
         document.getElementById("etuisPapier").checked = diagnostic.etuisPapier || false;
         document.getElementById("etuisCarton").checked = diagnostic.etuisCarton || false;
+        document.getElementById("etuisBois").checked = diagnostic.etuisBois || false;
         document.getElementById("etuisPlastique").checked = diagnostic.etuisPlastique || false;
         document.getElementById("etuisAimant").checked = diagnostic.etuisAimant || false;
         
@@ -175,8 +179,10 @@ function saveDiagnostic() {
 
             etiquetteCount: document.getElementById("etiquetteCount").value,
             etiquetteColor: document.getElementById("etiquetteColor").value,
-            etiquetteEcoInk: document.getElementById("etiquetteEcoInk").value,
+            etiquetteEcoInk: document.getElementById("etiquetteEcoInk").checked,
             etiquetteMat: document.getElementById("etiquetteMat").value,
+            etiquettecontreMat: document.getElementById("etiquettecontreMat").value,
+            papierreshum: document.getElementById("papierreshum").checked,
             etiquetteDor: document.getElementById("etiquetteDor").value,
             etiquetteColle: document.getElementById("etiquetteColle").value,
 
@@ -184,9 +190,10 @@ function saveDiagnostic() {
             etuiWeight: document.getElementById("etuiWeight").value,
             elementsassos: document.getElementById("elementsassos").checked,
             etuisEcoink: document.getElementById("etuisEcoink").checked,
-            etuisBois: document.getElementById("etuisBois").checked,
+            etuissilkpaper: document.getElementById("etuissilkpaper").checked,
             etuisPapier: document.getElementById("etuisPapier").checked,
             etuisCarton: document.getElementById("etuisCarton").checked,
+            etuisBois: document.getElementById("etuisBois").checked,
             etuisPlastique: document.getElementById("etuisPlastique").checked,
             etuisAimant: document.getElementById("etuisAimant").checked,
 
